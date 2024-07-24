@@ -1,18 +1,15 @@
-# Base image
-FROM python:3.8-slim
+# Python imajını kullan
+FROM python:3.11-slim
 
-# Set working directory
+# Çalışma dizinini oluştur ve ayarla
 WORKDIR /app
 
-# Install dependencies
+# Gereken Python paketlerini yükle
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-# Copy application code
-COPY . .
+# Flask uygulamasını kopyala
+COPY app.py app.py
 
-# Expose port
-EXPOSE 5000
-
-# Command to run the application
+# Flask uygulamasını çalıştır
 CMD ["python", "app.py"]
